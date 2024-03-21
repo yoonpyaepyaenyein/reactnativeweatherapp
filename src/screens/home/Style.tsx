@@ -129,6 +129,16 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  unitContainer: {
+    marginTop: hp(5),
+    flexDirection: 'row',
+    alignSelf: 'center',
+  },
+  celFahTitle: {
+    fontWeight: '600',
+    fontSize: wp(6),
+    color: palette.primary,
+  },
 });
 
 export default style;
