@@ -19,12 +19,19 @@ const style = StyleSheet.create({
     paddingLeft: wp(3),
     width: '80%',
   },
-  input: {color: palette.white, paddingLeft: wp(2), borderRadius: wp(10)},
+  input: {
+    color: palette.white,
+    paddingLeft: wp(2),
+    borderRadius: wp(10),
+    // backgroundColor: 'red',
+    width: '75%',
+  },
   iconButton: {
     backgroundColor: palette.bgWhite(0.3),
     padding: wp(2),
     marginRight: wp(2),
     borderRadius: wp(5),
+    width: '15%',
   },
   cityTitle: {
     color: palette.white,
@@ -95,6 +102,16 @@ const style = StyleSheet.create({
     fontSize: wp(5),
     letterSpacing: 2,
     // alignSelf: 'center',
+  },
+  searchIcon: {
+    width: wp(5.5),
+    height: wp(5.5),
+    overflow: 'hidden',
+    alignSelf: 'center',
+  },
+  searchRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
 

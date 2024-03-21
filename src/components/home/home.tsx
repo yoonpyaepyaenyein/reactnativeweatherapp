@@ -66,6 +66,7 @@ const Home = ({
       delay: 1000, // Delaying the location animation slightly more
       useNativeDriver: true,
     }).start();
+
     // Animate entry
     Animated.timing(fadeInAnim, {
       toValue: 1,
@@ -114,7 +115,7 @@ const Home = ({
               <Animated.View
                 style={[style.inputContainer, {opacity: locationAnim}]}>
                 <TextInput
-                  placeholder="Search City"
+                  placeholder="Search City ....."
                   placeholderTextColor={'lightgray'}
                   style={style.input}
                   value={city == 'Yangon' ? '' : city}
@@ -124,7 +125,10 @@ const Home = ({
                   style={style.iconButton}
                   activeOpacity={0.7}
                   onPress={searchAction}>
-                  <Text style={{color: palette.white}}>Search</Text>
+                  <Image
+                    source={require('../../../assets/icons/search.png')}
+                    style={style.searchIcon}
+                  />
                 </TouchableOpacity>
               </Animated.View>
 
@@ -144,17 +148,11 @@ const Home = ({
               <Animated.View style={{opacity: weatherDataAnim}}>
                 <View style={style.cityNameContainer}>
                   <Text style={style.cityTitle}>{weatherData.name} </Text>
-                  {/* <TouchableOpacity onPress={toggleTemperatureUnit}>
-                    <Text style={style.celFahTitle}>
-                      {temperatureUnit === 'C' ? 'Fahrenheit' : 'Celsius'}
-                    </Text>
-                  </TouchableOpacity> */}
                 </View>
 
                 {/* Your weather data rendering code */}
                 <Animated.View style={{opacity: weatherDataAnim}}>
-                  <View
-                    style={{flexDirection: 'row', justifyContent: 'center'}}>
+                  <View style={style.searchRowContainer}>
                     <Image
                       source={require('../../../assets/images/partlycloudy.png')}
                       style={{width: wp(45), height: wp(45), marginTop: hp(10)}}
@@ -189,6 +187,9 @@ const Home = ({
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         marginTop: hp(10),
+                        // backgroundColor: 'red',
+                        width: '80%',
+                        alignSelf: 'center',
                       }}>
                       <View style={style.otherStatsContainer}>
                         <Image
@@ -208,13 +209,13 @@ const Home = ({
                           {weatherData?.main?.humidity}%
                         </Text>
                       </View>
-                      <View style={style.otherStatsContainer}>
+                      {/* <View style={style.otherStatsContainer}>
                         <Image
                           source={require('../../../assets/icons/sun.png')}
                           style={style.wind}
                         />
                         <Text style={style.otherStats}>{time}</Text>
-                      </View>
+                      </View> */}
                     </View>
                   </View>
                 </Animated.View>
@@ -227,6 +228,7 @@ const Home = ({
                   alignItems: 'center',
                   justifyContent: 'center',
                   opacity: placeholderAnim,
+                  height: '80%',
                 }}>
                 <Text style={style.noData}>City Not Found !!</Text>
               </Animated.View>

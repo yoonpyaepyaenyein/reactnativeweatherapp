@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {RefreshControl, ScrollView, StatusBar, Text} from 'react-native';
 import {palette} from '../../utils/theme/color';
-import Geolocation from '@react-native-community/geolocation';
 
 //Component
 import HomeComponent from '../../components/home/home';
@@ -40,7 +39,7 @@ const HomeScreen = () => {
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     fetchWeather(city);
-  }, [refreshing]);
+  }, [refreshing, city]);
 
   const toggleTemperatureUnit = useCallback(() => {
     setTemperatureUnit(unit => (unit === 'C' ? 'F' : 'C'));
