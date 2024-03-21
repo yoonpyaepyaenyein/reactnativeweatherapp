@@ -6,56 +6,6 @@ import {
 } from 'react-native-responsive-screen';
 
 const style = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //     backgroundColor: palette.black,
-  //     // Center content vertically
-  //   },
-  //   inputC
-  //   rowContainer: {
-  //     flexDirection: 'row',
-  //     justifyContent: 'space-around', // Use space-between to evenly distribute elements
-  //     width: '100%',
-  //     marginVertical: 10,
-  //     paddingVertical: 10,
-  //     alignItems: 'center', // Center items vertically
-  //   },
-  //   input: {
-  //     borderWidth: 1,
-  //     borderColor: 'gray',
-  //     borderRadius: 5,
-  //     width: '70%',
-  //     // backgroundColor: 'red',
-  //     height: 40,
-  //     paddingLeft: 10,
-  //   },
-  //   searchButton: {
-  //     backgroundColor: 'lightblue',
-  //     borderRadius: 5,
-  //     width: '20%',
-  //     height: 38,
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },
-  //   defaultCityTitle: {
-  //     color: palette.white,
-  //     alignSelf: 'center',
-  //     fontSize: 20,
-  //     fontWeight: 'bold',
-  //   },
-  //   cloudImage: {
-  //     alignSelf: 'center',
-  //     resizeMode: 'contain',
-  //     overflow: 'hidden',
-  //     width: 100,
-  //     height: 100,
-  //   },
-  //   tempContext: {
-  //     color: palette.white,
-  //     fontWeight: 'bold',
-  //     alignSelf: 'center',
-  //     fontSize: 30,
-  //   },
   bgImage: {flex: 1, width: '100%', height: '100%', position: 'absolute'},
   inputContainer: {
     backgroundColor: palette.bgWhite(0.2),
@@ -138,6 +88,12 @@ const style = StyleSheet.create({
     fontWeight: '600',
     fontSize: wp(6),
     color: palette.primary,
+  },
+  noData: {
+    fontWeight: '400',
+    fontSize: wp(5),
+    letterSpacing: 2,
+    // alignSelf: 'center',
   },
 });
 

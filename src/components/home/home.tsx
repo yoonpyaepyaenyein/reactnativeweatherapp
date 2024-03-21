@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,6 @@ import {
 
 import style from '../../screens/home/Style';
 import {palette} from '../../utils/theme/color';
-
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -157,8 +156,15 @@ const Home = ({
 
           {/* Placeholder when weather data is not available */}
           {!weatherData && (
-            <View style={{alignItems: 'center'}}>
-              <Text>No weather data available</Text>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                // backgroundColor: 'red',
+                height: '80%',
+              }}>
+              <Text style={style.noData}>City Not Found !! </Text>
+              {/* <Text style={style.noData}>Please Try Again </Text> */}
             </View>
           )}
         </View>
@@ -167,4 +173,4 @@ const Home = ({
   );
 };
 
-export default Home;
+export default memo(Home);

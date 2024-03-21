@@ -16,7 +16,11 @@ const useWeatherFetcher = (city: string, API_KEY: string) => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        setWeatherData(data);
+        if (data.cod && data.cod === '404') {
+          setWeatherData(null); // City not found, set weatherData to null
+        } else {
+          setWeatherData(data);
+        }
       })
       .catch(error => {
         console.error('Error fetching weather:', error);
