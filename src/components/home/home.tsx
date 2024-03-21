@@ -8,14 +8,18 @@ import {
   TouchableOpacity,
   Animated,
   Easing,
-  StyleSheet,
 } from 'react-native';
 import {palette} from '../../utils/theme/color';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
+//Type
 import WeatherData from '../../types/WeatherDataType';
+
+//Style
+import style from '../../screens/home/Style';
 
 const Home = ({
   loading,
@@ -139,12 +143,12 @@ const Home = ({
             {weatherData && (
               <Animated.View style={{opacity: weatherDataAnim}}>
                 <View style={style.cityNameContainer}>
-                  <Text style={style.cityTitle}>{weatherData.name} | </Text>
-                  <TouchableOpacity onPress={toggleTemperatureUnit}>
+                  <Text style={style.cityTitle}>{weatherData.name} </Text>
+                  {/* <TouchableOpacity onPress={toggleTemperatureUnit}>
                     <Text style={style.celFahTitle}>
                       {temperatureUnit === 'C' ? 'Fahrenheit' : 'Celsius'}
                     </Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                 </View>
 
                 {/* Your weather data rendering code */}
@@ -161,13 +165,17 @@ const Home = ({
                 <Animated.View style={{opacity: weatherDataAnim}}>
                   <View>
                     <View style={style.unitContainer}>
-                      <Text style={style.temp}>
-                        {temperatureUnit === 'C'
-                          ? `${weatherData?.main?.temp}\u00B0`
-                          : `${convertTemperatureAction(
-                              weatherData?.main?.temp,
-                            )}\u00B0`}
-                      </Text>
+                      <TouchableOpacity
+                        onPress={toggleTemperatureUnit}
+                        activeOpacity={0.7}>
+                        <Text style={style.temp}>
+                          {temperatureUnit === 'C'
+                            ? `${weatherData?.main?.temp}\u00B0`
+                            : `${convertTemperatureAction(
+                                weatherData?.main?.temp,
+                              )}\u00B0`}
+                        </Text>
+                      </TouchableOpacity>
                       <Text style={style.celFahTitle}>
                         {temperatureUnit == 'C' ? ' C ' : ' F '}
                       </Text>
@@ -229,92 +237,5 @@ const Home = ({
     </View>
   );
 };
-
-const style = StyleSheet.create({
-  bgImage: {flex: 1, width: '100%', height: '100%', position: 'absolute'},
-  inputContainer: {
-    backgroundColor: palette.bgWhite(0.2),
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: wp(15),
-    marginHorizontal: wp(3),
-    borderRadius: wp(10),
-    height: wp(12),
-    paddingLeft: wp(3),
-    width: '80%',
-  },
-  input: {color: palette.white, paddingLeft: wp(2), borderRadius: wp(10)},
-  iconButton: {
-    backgroundColor: palette.bgWhite(0.3),
-    padding: wp(2),
-    marginRight: wp(2),
-    borderRadius: wp(5),
-  },
-  cityTitle: {
-    color: palette.white,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 23,
-  },
-  temp: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: palette.white,
-    fontSize: wp(10),
-  },
-  weatherContext: {
-    textAlign: 'center',
-    color: palette.white,
-    fontSize: wp(5),
-    marginTop: wp(2),
-  },
-  wind: {
-    width: wp(5),
-    height: wp(5),
-  },
-  location: {
-    width: wp(10),
-    height: wp(10),
-    marginBottom: wp(1),
-  },
-  otherStats: {
-    color: palette.white,
-    fontSize: wp(3.5),
-    paddingLeft: wp(2),
-  },
-  otherStatsContainer: {
-    marginHorizontal: hp(3),
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: hp(6),
-  },
-  cityNameContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: hp(10),
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  unitContainer: {
-    marginTop: hp(5),
-    flexDirection: 'row',
-    alignSelf: 'center',
-  },
-  celFahTitle: {
-    fontWeight: '600',
-    fontSize: wp(6),
-    color: palette.primary,
-  },
-  noData: {
-    fontWeight: '400',
-    fontSize: wp(5),
-    letterSpacing: 2,
-  },
-});
 
 export default memo(Home);

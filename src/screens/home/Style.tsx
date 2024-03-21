@@ -86,8 +86,9 @@ const style = StyleSheet.create({
   },
   celFahTitle: {
     fontWeight: '600',
-    fontSize: wp(6),
-    color: palette.primary,
+    fontSize: wp(10),
+    color: palette.white,
+    alignSelf: 'center',
   },
   noData: {
     fontWeight: '400',

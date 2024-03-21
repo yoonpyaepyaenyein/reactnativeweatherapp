@@ -6,7 +6,7 @@ const useWeatherFetcher = (city: string, API_KEY: string) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
-  const fetchWeather = () => {
+  const fetchWeather = (city: string) => {
     setLoading(true);
     setRefreshing(true);
 
