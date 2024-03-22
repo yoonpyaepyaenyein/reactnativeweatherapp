@@ -29,9 +29,10 @@ export const useWeatherUtils = (
 
   const convertTemperature = (temp: number) => {
     if (temperatureUnit === 'F') {
-      return (temp * 9) / 5 + 32; // Celsius to Fahrenheit conversion
+      const fahrenheit = (temp * 9) / 5 + 32;
+      return parseFloat(fahrenheit.toFixed(2)); // Convert to Fahrenheit and round to two decimal places
     }
-    return temp; // Default to Celsius
+    return parseFloat(temp.toFixed(2)); // Round Celsius temperature to two decimal places
   };
 
   return {sunsetTime, convertTemperature};
