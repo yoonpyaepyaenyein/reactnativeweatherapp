@@ -132,10 +132,11 @@ const Home = ({
                 </TouchableOpacity>
               </Animated.View>
 
-              <Animated.View style={{marginTop: wp(17), opacity: fadeInAnim}}>
+              <Animated.View style={{opacity: fadeInAnim}}>
                 <TouchableOpacity
                   activeOpacity={0.7}
-                  onPress={getCurrentLocationWeather}>
+                  onPress={getCurrentLocationWeather}
+                  style={style.locationContainer}>
                   <Image
                     source={require('../../../assets/icons/location.png')}
                     style={style.location}
@@ -147,7 +148,12 @@ const Home = ({
             {weatherData && (
               <Animated.View style={{opacity: weatherDataAnim}}>
                 <View style={style.cityNameContainer}>
-                  <Text style={style.cityTitle}>{weatherData.name} </Text>
+                  <Text style={style.cityTitle}>
+                    {weatherData.name} ,{' '}
+                    {weatherData.sys.country === 'MM'
+                      ? 'Myanmar'
+                      : weatherData.sys.country}{' '}
+                  </Text>
                 </View>
 
                 {/* Your weather data rendering code */}
@@ -155,7 +161,7 @@ const Home = ({
                   <View style={style.searchRowContainer}>
                     <Image
                       source={require('../../../assets/images/partlycloudy.png')}
-                      style={{width: wp(45), height: wp(45), marginTop: hp(10)}}
+                      style={style.image}
                     />
                   </View>
                 </Animated.View>
@@ -165,7 +171,8 @@ const Home = ({
                     <View style={style.unitContainer}>
                       <TouchableOpacity
                         onPress={toggleTemperatureUnit}
-                        activeOpacity={0.7}>
+                        activeOpacity={0.7}
+                        style={{flexDirection: 'row'}}>
                         <Text style={style.temp}>
                           {temperatureUnit === 'C'
                             ? `${weatherData?.main?.temp}\u00B0`
@@ -173,24 +180,17 @@ const Home = ({
                                 weatherData?.main?.temp,
                               )}\u00B0`}
                         </Text>
+
+                        <Text style={style.celFahTitle}>
+                          {temperatureUnit == 'C' ? ' C ' : ' F '}
+                        </Text>
                       </TouchableOpacity>
-                      <Text style={style.celFahTitle}>
-                        {temperatureUnit == 'C' ? ' C ' : ' F '}
-                      </Text>
                       <Text style={style.weatherContext}>
                         {weatherData !== null ?? weatherData?.weather[0]?.main}
                       </Text>
                     </View>
 
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        marginTop: hp(10),
-                        // backgroundColor: 'red',
-                        width: '80%',
-                        alignSelf: 'center',
-                      }}>
+                    <View style={style.bottomContainer}>
                       <View style={style.otherStatsContainer}>
                         <Image
                           source={require('../../../assets/icons/wind.png')}

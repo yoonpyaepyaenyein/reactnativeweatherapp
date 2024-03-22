@@ -1,5 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {RefreshControl, ScrollView, StatusBar, Text} from 'react-native';
+import {
+  Keyboard,
+  RefreshControl,
+  ScrollView,
+  StatusBar,
+  Text,
+} from 'react-native';
 import {palette} from '../../utils/theme/color';
 
 //Component
@@ -31,6 +37,7 @@ const HomeScreen = () => {
   };
 
   const handleSearch = useCallback(() => {
+    Keyboard.dismiss();
     if (city.trim() !== '') {
       fetchWeather(city);
     }
