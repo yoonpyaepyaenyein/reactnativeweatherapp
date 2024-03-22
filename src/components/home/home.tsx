@@ -10,15 +10,7 @@ import {
   Easing,
 } from 'react-native';
 import {palette} from '../../utils/theme/color';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-
-//Type
 import WeatherData from '../../types/WeatherDataType';
-
-//Style
 import style from '../../screens/home/Style';
 
 const Home = ({
@@ -55,7 +47,7 @@ const Home = ({
       toValue: 1,
       duration: 1000,
       easing: Easing.linear,
-      delay: 500, // Delaying the title animation slightly
+      delay: 500,
       useNativeDriver: true,
     }).start();
 
@@ -63,11 +55,10 @@ const Home = ({
       toValue: 1,
       duration: 1000,
       easing: Easing.linear,
-      delay: 1000, // Delaying the location animation slightly more
+      delay: 1000,
       useNativeDriver: true,
     }).start();
 
-    // Animate entry
     Animated.timing(fadeInAnim, {
       toValue: 1,
       duration: 1000,
@@ -75,7 +66,6 @@ const Home = ({
       useNativeDriver: true,
     }).start();
 
-    // Animate weather data container
     if (weatherData) {
       Animated.timing(weatherDataAnim, {
         toValue: 1,
@@ -85,7 +75,6 @@ const Home = ({
       }).start();
     }
 
-    // Animate placeholder
     if (!loading && !weatherData) {
       Animated.timing(placeholderAnim, {
         toValue: 1,
@@ -111,14 +100,13 @@ const Home = ({
         ) : (
           <View>
             <View style={{flexDirection: 'row'}}>
-              {/* Search City Field */}
               <Animated.View
                 style={[style.inputContainer, {opacity: locationAnim}]}>
                 <TextInput
                   placeholder="Search City ....."
                   placeholderTextColor={'lightgray'}
                   style={style.input}
-                  value={city == 'Yangon' ? '' : city}
+                  value={city === 'Yangon' ? '' : city}
                   onChangeText={onChangeText}
                 />
                 <TouchableOpacity
@@ -156,7 +144,6 @@ const Home = ({
                   </Text>
                 </View>
 
-                {/* Your weather data rendering code */}
                 <Animated.View style={{opacity: weatherDataAnim}}>
                   <View style={style.searchRowContainer}>
                     <Image
@@ -180,7 +167,6 @@ const Home = ({
                                 weatherData?.main?.temp,
                               )}\u00B0`}
                         </Text>
-
                         <Text style={style.celFahTitle}>
                           {temperatureUnit == 'C' ? ' C ' : ' F '}
                         </Text>
@@ -209,13 +195,6 @@ const Home = ({
                           {weatherData?.main?.humidity}%
                         </Text>
                       </View>
-                      {/* <View style={style.otherStatsContainer}>
-                        <Image
-                          source={require('../../../assets/icons/sun.png')}
-                          style={style.wind}
-                        />
-                        <Text style={style.otherStats}>{time}</Text>
-                      </View> */}
                     </View>
                   </View>
                 </Animated.View>
