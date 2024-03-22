@@ -35,8 +35,8 @@ android
 
 <p float="left">
 <img src="assets/screenshots/image1.jpg" width="180" height="380" />
-<img src="assets/screenshots/image2.jp" width="180" height="380" />
-<img src="assets/screenshots/image3.jp" width="180" height="380" />
-<img src="assets/screenshots/image4.jp" width="180" height="380" />
-<img src="assets/screenshots/image5.jp" width="180" height="380" />
+<img src="assets/screenshots/image2.jpg" width="180" height="380" />
+<img src="assets/screenshots/image3.jpg" width="180" height="380" />
+<img src="assets/screenshots/image4.jpg" width="180" height="380" />
+<img src="assets/screenshots/image5.jpg" width="180" height="380" />
 </p>
