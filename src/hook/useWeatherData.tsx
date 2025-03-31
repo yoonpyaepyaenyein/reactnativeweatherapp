@@ -13,6 +13,7 @@ export const useWeatherUtils = (
   useEffect(() => {
     if (weatherData?.timezone) {
       const sunsetTimestamp: number = weatherData.timezone;
+      console.log('sunsetTimestamp', sunsetTimestamp);
       const sunsetDate = new Date(sunsetTimestamp * 1000);
 
       let hours = sunsetDate.getHours();
