@@ -1,5 +1,5 @@
 interface Clouds {
-  all: number;
+  all: any;
 }
 
 interface Coord {
